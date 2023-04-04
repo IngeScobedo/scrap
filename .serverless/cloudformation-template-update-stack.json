@@ -162,9 +162,9 @@
           "S3Bucket": {
             "Ref": "ServerlessDeploymentBucket"
           },
-          "S3Key": "serverless/constancias/dev/1680634211244-2023-04-04T18:50:11.244Z/constancias.zip"
+          "S3Key": "serverless/constancias/dev/1680636794653-2023-04-04T19:33:14.653Z/constancias.zip"
         },
-        "Handler": "app/app.handler",
+        "Handler": "app.handler",
         "Runtime": "nodejs18.x",
         "FunctionName": "constancias-dev-app",
         "MemorySize": 128,
@@ -180,14 +180,14 @@
         "AppLogGroup"
       ]
     },
-    "AppLambdaVersionfINlSYRMffFmFdWcXO0bYPyjM1e3izw8xLaxlqYmY": {
+    "AppLambdaVersionxcxAystLRKz6A3BazjndzjxnZY3UuKHJm7LRRCurOxY": {
       "Type": "AWS::Lambda::Version",
       "DeletionPolicy": "Retain",
       "Properties": {
         "FunctionName": {
           "Ref": "AppLambdaFunction"
         },
-        "CodeSha256": "z8FhKKrMXsDBz3KHGcaJheApp3W+gG+9YfbBqkPems0="
+        "CodeSha256": "VSjx1Mxzspd7894g+iggVLhHjbKgyaQOzVZI0W4C5Tk="
       }
     },
     "ApiGatewayRestApi": {
@@ -405,7 +405,7 @@
         "AppLambdaPermissionApiGateway"
       ]
     },
-    "ApiGatewayDeployment1680634200504": {
+    "ApiGatewayDeployment1680636771031": {
       "Type": "AWS::ApiGateway::Deployment",
       "Properties": {
         "RestApiId": {
@@ -470,7 +470,7 @@
     "AppLambdaFunctionQualifiedArn": {
       "Description": "Current Lambda function version",
       "Value": {
-        "Ref": "AppLambdaVersionfINlSYRMffFmFdWcXO0bYPyjM1e3izw8xLaxlqYmY"
+        "Ref": "AppLambdaVersionxcxAystLRKz6A3BazjndzjxnZY3UuKHJm7LRRCurOxY"
       },
       "Export": {
         "Name": "sls-constancias-dev-AppLambdaFunctionQualifiedArn"

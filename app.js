@@ -1,4 +1,5 @@
-const serverless = require("serverles");
+const awsServerlessExpress = require("aws-serverless-express")
+const serverless = require("serverless");
 const express = require("express");
 const fs = require("fs");
 const pdf2img = require("pdf-img-convert");
@@ -19,19 +20,19 @@ app.use(express.json())
 app.post("/upload", async (req, res) => {
   try {
     // Delete existing images if they exist
-    fs.rmSync("./images", { recursive: true, force: true });
+    fs.rmSync('/tmp/images', { recursive: true, force: true });
 
     // Create a new directory for images
-    fs.mkdirSync("./images");
+    fs.mkdirSync('/tmp/images');
 
     // Check if a PDF file was uploaded
     if (!req.files || !req.files.pdfFile) {
       return res.status(400).json({ message: "No PDF file uploaded" });
     }
 
-    // Save the uploaded PDF file to the server
+     // Save the uploaded PDF file to the server
     const pdfFile = req.files.pdfFile;
-    const pdfFilePath = `./${pdfFile.name}`;
+    const pdfFilePath = `/tmp/${pdfFile.name}`;
     await pdfFile.mv(pdfFilePath);
 
     // Convert the PDF to images
@@ -39,7 +40,7 @@ app.post("/upload", async (req, res) => {
 
     // Loop through the output images and extract the QR code URL
     for (let i = 0; i < outputImages.length; i++) {
-      const pathToImage = `./images/output${i}.png`;
+      const pathToImage = `/tmp/images/output${i}.png`;
       fs.writeFile(pathToImage, outputImages[i], function (error) {
         if (error) {
           console.error("Error: " + error);
@@ -50,7 +51,7 @@ app.post("/upload", async (req, res) => {
     // Loop through the output images and extract the QR code URL
     const links = [];
     for (let i = 0; i < outputImages.length; i++) {
-      const pathToImage = `./images/output${i}.png`;
+      const pathToImage = `/tmp/images/output${i}.png`;
 
       // Read the image asynchronously
       fs.readFile(pathToImage, function (error, data) {
@@ -121,5 +122,8 @@ app.post("/upload", async (req, res) => {
 
 // Start the server
 // app.listen(3000, () => console.log("Server running on port 3000"));
+const server = awsServerlessExpress.createServer(app)
+module.exports.handler = (event, context) => {
+	awsServerlessExpress.proxy(server, event, context)
+}
 
-module.exports.handler = serverless(app)
