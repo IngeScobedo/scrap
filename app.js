@@ -16,10 +16,9 @@ app.use(fileUpload());
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json())
 app.use(express.static("public"))
+
 app.get("/", (req, res) => {
-	res.status(200).json({
-		ok: true
-	})
+	res.sendFile(__dirname + "public/index.html")
 })
 // Set up a route for uploading PDF files
 app.post("/upload", async (req, res) => {
