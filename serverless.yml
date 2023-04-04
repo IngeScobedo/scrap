@@ -17,3 +17,7 @@ functions:
           path: /{proxy+}
           method: ANY
           cors: true
+package:
+  exclude:
+    - node_modules/**
+    - venv/**

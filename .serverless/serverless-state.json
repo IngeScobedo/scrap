@@ -175,7 +175,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/constancias/dev/1680636794653-2023-04-04T19:33:14.653Z/constancias.zip"
+                "S3Key": "serverless/constancias/dev/1680637328358-2023-04-04T19:42:08.358Z/constancias.zip"
               },
               "Handler": "app.handler",
               "Runtime": "nodejs18.x",
@@ -193,14 +193,14 @@
               "AppLogGroup"
             ]
           },
-          "AppLambdaVersionxcxAystLRKz6A3BazjndzjxnZY3UuKHJm7LRRCurOxY": {
+          "AppLambdaVersionqeqEMLHRz7sIBGW82BAwD2VO1dkmO1W5peNSLnSi4": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "AppLambdaFunction"
               },
-              "CodeSha256": "VSjx1Mxzspd7894g+iggVLhHjbKgyaQOzVZI0W4C5Tk="
+              "CodeSha256": "34YZLz60N3MQ2+12vZPi5rkyRDswrDOcFreGPhkqTMo="
             }
           },
           "ApiGatewayRestApi": {
@@ -418,7 +418,7 @@
               "AppLambdaPermissionApiGateway"
             ]
           },
-          "ApiGatewayDeployment1680636771031": {
+          "ApiGatewayDeployment1680637324362": {
             "Type": "AWS::ApiGateway::Deployment",
             "Properties": {
               "RestApiId": {
@@ -483,7 +483,7 @@
           "AppLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "AppLambdaVersionxcxAystLRKz6A3BazjndzjxnZY3UuKHJm7LRRCurOxY"
+              "Ref": "AppLambdaVersionqeqEMLHRz7sIBGW82BAwD2VO1dkmO1W5peNSLnSi4"
             },
             "Export": {
               "Name": "sls-constancias-dev-AppLambdaFunctionQualifiedArn"
@@ -661,7 +661,7 @@
         "timeout": 6,
         "runtime": "nodejs18.x",
         "vpc": {},
-        "versionLogicalId": "AppLambdaVersionxcxAystLRKz6A3BazjndzjxnZY3UuKHJm7LRRCurOxY"
+        "versionLogicalId": "AppLambdaVersionqeqEMLHRz7sIBGW82BAwD2VO1dkmO1W5peNSLnSi4"
       }
     },
     "configValidationMode": "warn",
@@ -673,6 +673,15 @@
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
+      },
+      "package": {
+        "exclude": [
+          "node_modules/**",
+          "venv/**"
+        ],
+        "artifactsS3KeyDirname": "serverless/constancias/dev/code-artifacts",
+        "artifact": "/home/ec2-user/scrap/.serverless/constancias.zip",
+        "artifactDirectoryName": "serverless/constancias/dev/1680637328358-2023-04-04T19:42:08.358Z"
       }
     },
     "layers": {},
@@ -680,7 +689,7 @@
     "artifact": "/home/ec2-user/scrap/.serverless/constancias.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/constancias/dev/1680636794653-2023-04-04T19:33:14.653Z",
+    "artifactDirectoryName": "serverless/constancias/dev/1680637328358-2023-04-04T19:42:08.358Z",
     "artifact": "constancias.zip"
   }
 }
