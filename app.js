@@ -121,9 +121,9 @@ app.post("/upload", async (req, res) => {
 });
 
 // Start the server
-// app.listen(3000, () => console.log("Server running on port 3000"));
-const server = awsServerlessExpress.createServer(app)
-module.exports.handler = (event, context) => {
-	awsServerlessExpress.proxy(server, event, context)
-}
+app.listen(3000, () => console.log("Server running on port 3000"));
+// const server = awsServerlessExpress.createServer(app)
+// module.exports.handler = (event, context) => {
+// 	awsServerlessExpress.proxy(server, event, context)
+// }
 
